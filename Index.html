@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <title>"Libros"</title>
+    <style type="text/css">
+        .contenedor {
+            box-shadow: 0px 0px 1000px rgb(0, 255, 191);
+            border: 5px solid rgb(3, 112, 255);
+            margin-top:3em;
+            padding-top: 1em;
+            text-align: center;
+            background-color: aliceblue;
+        }
+
+        .table {
+            text-align: center;
+        }
+
+        #modalform {
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .modal-title {
+            font-size: 35px;
+        }
+        
+    </style>
+</head>
+
+<body style="background-color: rgb(255, 255, 255);">
+    <div class="container contenedor">
+        <h3 style="text-align: center;">"UTSH"</h3>
+        <hr>
+        <form class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="txtisbn" class="form-label">Nombre Del Alumno</label>
+                    <input required type="txt" class="form-control" id="txtisbn" name="txtisbn">
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="txtnombre" class="form-label">Matricula</label>
+                    <input required type="text" name="txtnombre" id="txtnombre" class="form-control">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="txtautor" class="form-label">Carrera</label>
+                    <input required type="text" name="txtautor" id="txtautor" class="form-control">
+                </div>
+                 </div>
+
+            <div class="row">
+                
+
+                <div class="col-4 mb-3">
+                    <label for="txtAño" class="form-label">Materias</label>
+                    <div class="input-group">
+                        <span id="txtAño" class="input-group-text">
+                            <i class="bi bi-text-center"></i>
+                        </span>
+                        <input required aria-describedby="txtAño" type="text" name="txtAño" id="txtAño" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-4 mb-3">
+                    <label for="txtno_pagina" class="form-label">Pagar</label>
+                    <div class="input-group">
+                        <span id="txtno_pagina" class="input-group-text">
+                            <i class="bi bi-text-center"></i>
+                        </span>
+                        <input required aria-describedby="txtno_pagina" type="text" name="txtno_pagina" id="txtno_pagina" class="form-control">
+                    </div>
+                </div>
+
+            </div>
+
+            
+            <div class="row">
+                <button type="button" id="submitbtn" class="btn btn-primary">Enviar Pagar</button>
+            </div>
+        </form>
+    </div>
+    <br>
+    

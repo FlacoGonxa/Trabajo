@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Registro de Alumno"</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">   
+</head>
+<style>
+        .container{
+            box-shadow: 5px 100px 1000px rgb(0, 253, 106);
+            border: 5px solid rgb(39, 212, 255);
+            margin-top:10em;
+            padding-top: 1em;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+   
+</head>
+<body style="background-color: rgb(227, 255, 242);">
+<body>
+    <div class="container" >
+        
+        <div class="row">
+            <from class="col-8 offset-2 needs-validation">
+                <h1>"Registar"</h1>
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="txtEmail" class="form-label">Gmail</label>
+                        <input type="text" name="txtgmail" id="txtgmail" aria-describedby="basic-addon1" class="form-control" placeholder="Gmail" required>
+                    </div><!--mb-3 email-->
+                </div>
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="txtPassword" class="form-label">Password</label>
+                        <input type="password" name="txtPassword1" id="txtPassword1" class="form-control" placeholder="Password" required>
+                    </div><!--mb-3 password-->
+                </div>
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="txtPassword" class="form-label"> Confi-Password</label>
+                        <input type="password" name="txtPassword2" id="txtPassword2" class="form-control" placeholder="Confi-Password" required>
+                    </div><!--mb-3 password-->
+                </div>
+                <button type="button" id="btn" class="btn btn-outline-primary">Guardar</button>
+                
+                <li><a href= "login.html"  class="link-secondary"><strong>Login</strong></a></li>
+            </from>
+        </div>
+    </div>
+
+    <script type="module">
+       // Import the functions you need from the SDKs you need
+       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyD2yOX1_AeEOAmyMTrZayHOiWQQUp1VMqs",
+          authDomain: "api-web-7a8b8.firebaseapp.com",
+          databaseURL: "https://api-web-7a8b8-default-rtdb.firebaseio.com",
+          projectId: "api-web-7a8b8",
+          storageBucket: "api-web-7a8b8.appspot.com",
+          messagingSenderId: "584088667325",
+          appId: "1:584088667325:web:d8ad4d1a597dcaa7a263d4", 
+  };
+
+        var correo=document.getElementById("txtgmail");
+        var pass=document.getElementById("txtPassword1");
+        var cpass=document.getElementById("txtPassword2");
+        var save    =document.getElementById("btn");
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        save.addEventListener("click", function (){
+            if((pass.value==cpass.value) && (pass.value.length >= 6) && (cpass.value.length >= 6)){
+            alert("Bienvenido, Ingresa Ahora");
+            createUserWithEmailAndPassword (auth, correo.value, pass.value)
+            .then ((userCredential) => {
+                //Signed in
+            const correo = userCredential.correo;
+            location.replace("login.html")
+            alert("Usuario creado con exito");
+            })
+
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.error(errorCode);
+    console.error(errorMessage);
+    alert("Error al crear usuario"+ errorMessage);
+  });
+} else {
+    alert("Las contraseñas no coinciden");
+}{
+alert("La contraseña es de 6 caracteres");
+}
+        })
+      </script>
+</body>
+</html>

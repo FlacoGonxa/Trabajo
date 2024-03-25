@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<style>
+        .container{
+            box-shadow: 0px 0px 1000px rgb(2, 250, 126);
+            border: 5px solid rgb(1, 204, 255);
+            margin-top:10em;
+            padding-top: 0em;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+        }
+
+    </style>
+
+</head>
+<body style="background-color: rgb(248, 248, 248);">
+<body>
+    <div class="container">
+        <div class="row">
+            <from class="col-8 offset-2 needs-validation">
+                <h1>"Login"</h1>
+                <div class="mb-3">
+                    <label for="txtEmail" class="form-label">Gmail</label>
+                    <input type="text" name="txtgmail" id="txtgmail" class="form-control" placeholder="Gmail" required>
+
+                </div><!--mb-3 email-->
+                <div class="mb-3">
+                    <label for="txtPassword" class="form-label">Password</label>
+                    <input type="password" name="txtPassword1" id="txtPassword1" class="form-control" placeholder="Password" required>
+                </div><!--mb-3 password-->
+    
+                <button type="button" id="log" class="btn btn-outline-primary">Login</button>
+                <li><a href= "registrar.html"  class="link-secondary"><strong>Registrar</strong></a></li>
+            </from>
+        </div>
+    </div>
+    <script type="module">
+        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+        
+               const firebaseConfig = {
+        apiKey: "AIzaSyD2yOX1_AeEOAmyMTrZayHOiWQQUp1VMqs",
+        authDomain: "api-web-7a8b8.firebaseapp.com",
+        databaseURL: "https://api-web-7a8b8-default-rtdb.firebaseio.com",
+        projectId: "api-web-7a8b8",
+        storageBucket: "api-web-7a8b8.appspot.com",
+        messagingSenderId: "584088667325",
+        appId: "1:584088667325:web:d8ad4d1a597dcaa7a263d4",
+  };
+
+        var correo=document.getElementById("txtgmail");
+        var pass=document.getElementById("txtPassword1");;
+        var login=document.getElementById("log");
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        login.addEventListener("click",  (e)=>{
+            signInWithEmailAndPassword(auth, correo.value, pass.value)
+            .then ((userCredential) => {
+                //Signed in
+            const user = userCredential.user;
+            console.log(user);
+            location.replace("index.html")
+
+            })
+
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.error(errorCode);
+    console.error(errorMessage);
+    
+    alert("Error al ingresar Usuario"+ errorMessage);
+  });
+        });
+
+        
+
+</script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
